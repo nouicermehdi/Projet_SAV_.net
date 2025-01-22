@@ -28,9 +28,9 @@ namespace Domain.Repository
             return entity;            
         }
 
-        public Task CommitAsync()
+        public async Task CommitAsync()
         {
-            throw new NotImplementedException();
+            await _savDbContext.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(T entity)
@@ -69,5 +69,7 @@ namespace Domain.Repository
             _savDbContext.Entry(entity).State= EntityState.Modified;
             await _savDbContext.SaveChangesAsync();
         }
+
+
     }
 }
