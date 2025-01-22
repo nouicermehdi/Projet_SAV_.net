@@ -15,15 +15,24 @@ namespace Infrastructure.Extensions
             services.AddDbContext<SavDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
+            
+
             // Configurez l'identité avec votre classe Client
-            services.AddIdentityCore<Client>(options =>
+            services.AddIdentityApiEndpoints<Client>(options =>
             {
                 // Configurez les options d'Identity si nécessaire
                 options.Password.RequireDigit = true;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
             })
-            .AddEntityFrameworkStores<SavDbContext>();
+
+             .AddEntityFrameworkStores<SavDbContext>();
+
+            //Pour afficher endpoint User en swagger
+            services.AddEndpointsApiExplorer();
+
         }
+
+
     }
 }

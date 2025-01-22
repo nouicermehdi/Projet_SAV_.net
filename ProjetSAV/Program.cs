@@ -30,6 +30,7 @@ app.UseHttpsRedirection();
 
 app.MapIdentityApi<Client>();
 
+
 app.UseAuthentication();
 
 app.UseAuthorization();

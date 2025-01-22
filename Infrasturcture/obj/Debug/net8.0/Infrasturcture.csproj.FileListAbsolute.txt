@@ -17,3 +17,4 @@ C:\Users\nouic\Documents\new\.net\ProjetSAV\Infrasturcture\obj\Debug\net8.0\refi
 C:\Users\nouic\Documents\new\.net\ProjetSAV\Infrasturcture\obj\Debug\net8.0\Infrasturcture.pdb
 C:\Users\nouic\Documents\new\.net\ProjetSAV\Infrasturcture\obj\Debug\net8.0\Infrasturcture.genruntimeconfig.cache
 C:\Users\nouic\Documents\new\.net\ProjetSAV\Infrasturcture\obj\Debug\net8.0\ref\Infrasturcture.dll
+C:\Users\nouic\Documents\new\.net\ProjetSAV\Infrasturcture\obj\Debug\net8.0\Infrasturcture.sourcelink.json

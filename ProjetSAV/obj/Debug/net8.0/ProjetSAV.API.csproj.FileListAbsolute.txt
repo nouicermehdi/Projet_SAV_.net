@@ -170,3 +170,5 @@ C:\Users\nouic\Documents\new\.net\ProjetSAV\ProjetSAV\bin\Debug\net8.0\ru\Micros
 C:\Users\nouic\Documents\new\.net\ProjetSAV\ProjetSAV\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\nouic\Documents\new\.net\ProjetSAV\ProjetSAV\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\nouic\Documents\new\.net\ProjetSAV\ProjetSAV\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\nouic\Documents\new\.net\ProjetSAV\ProjetSAV\obj\Debug\net8.0\ProjetSAV.API.sourcelink.json
+C:\Users\nouic\Documents\new\.net\ProjetSAV\ProjetSAV\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
