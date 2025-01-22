@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "identityapp1": {
+      "connectionInfo": "App registration: SAV, Tenant: Ministere de l'Enseignement Superieur et de la Recherche Scientifique (mesrs.tn - Microsoft Entra ID)",
+      "type": "identityapp.default"
+    }
+  }
+}
