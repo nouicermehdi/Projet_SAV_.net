@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fc6noRj085U=",
+  "dgSpecHash": "28QjOGiUhZ4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj",
+  "projectFilePath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nouic\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\nouic\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

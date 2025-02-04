@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjetSAV.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb6beb2477e44c7c2c2a28c42da6750744aadf9b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab43971e4715e035c6ec66b4978514b28ed58d43")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjetSAV.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjetSAV.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

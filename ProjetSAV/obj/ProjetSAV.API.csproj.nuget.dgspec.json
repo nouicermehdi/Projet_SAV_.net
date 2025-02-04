@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\ProjetSAV\\ProjetSAV.API.csproj": {}
+    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\ProjetSAV\\ProjetSAV.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj": {
+    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\nouic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\obj\\",
+        "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Domain\\Domain.csproj"
+              "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Domain\\Domain.csproj"
               }
             }
           }
@@ -73,14 +73,14 @@
         }
       }
     },
-    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Domain\\Domain.csproj": {
+    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\nouic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -122,6 +122,10 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -144,14 +148,14 @@
         }
       }
     },
-    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj": {
+    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj",
+        "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj",
         "projectName": "Infrasturcture",
-        "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj",
+        "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj",
         "packagesPath": "C:\\Users\\nouic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\obj\\",
+        "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -172,8 +176,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj"
+              "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj"
               }
             }
           }
@@ -203,6 +207,12 @@
               "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.0, )"
             },
@@ -237,14 +247,14 @@
         }
       }
     },
-    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\ProjetSAV\\ProjetSAV.API.csproj": {
+    "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\ProjetSAV\\ProjetSAV.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\ProjetSAV\\ProjetSAV.API.csproj",
+        "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\ProjetSAV\\ProjetSAV.API.csproj",
         "projectName": "ProjetSAV.API",
-        "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\ProjetSAV\\ProjetSAV.API.csproj",
+        "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\ProjetSAV\\ProjetSAV.API.csproj",
         "packagesPath": "C:\\Users\\nouic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\ProjetSAV\\obj\\",
+        "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\ProjetSAV\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -265,11 +275,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj"
+              "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj"
               },
-              "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj": {
-                "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj"
+              "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj": {
+                "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj"
               }
             }
           }

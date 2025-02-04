@@ -2143,7 +2143,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
@@ -5567,11 +5568,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\ProjetSAV\\ProjetSAV.API.csproj",
+      "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\ProjetSAV\\ProjetSAV.API.csproj",
       "projectName": "ProjetSAV.API",
-      "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\ProjetSAV\\ProjetSAV.API.csproj",
+      "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\ProjetSAV\\ProjetSAV.API.csproj",
       "packagesPath": "C:\\Users\\nouic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\ProjetSAV\\obj\\",
+      "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\ProjetSAV\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5592,11 +5593,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj"
+            "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj"
             },
-            "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj": {
-              "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj"
+            "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj": {
+              "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj"
             }
           }
         }

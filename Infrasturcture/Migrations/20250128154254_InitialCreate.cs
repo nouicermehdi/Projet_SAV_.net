@@ -6,11 +6,28 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrasturcture.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Articles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateAchat = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    Prix = table.Column<double>(type: "float", nullable: false),
+                    GarantieEnMois = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Articles", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -31,8 +48,8 @@ namespace Infrasturcture.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateNaissance = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Admin_DateNaissance = table.Column<DateOnly>(type: "date", nullable: true),
+                    DateNaissance = table.Column<DateOnly>(type: "date", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -54,17 +71,67 @@ namespace Infrasturcture.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ResponsablesSAV",
+                name: "Clients",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateNaissance = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clients", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Interventions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateIntervention = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Statut = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EstSousGarantie = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Interventions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reclamations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Titre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Statut = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reclamations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Responsables",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ResponsablesSAV", x => x.id);
+                    table.PrimaryKey("PK_Responsables", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,7 +140,7 @@ namespace Infrasturcture.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false)
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,29 +166,6 @@ namespace Infrasturcture.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Articles",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateAchat = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Prix = table.Column<float>(type: "real", nullable: false),
-                    GarantieEnMois = table.Column<int>(type: "int", nullable: false),
-                    ClientId = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Articles", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Articles_AspNetUsers_ClientId",
-                        column: x => x.ClientId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -209,84 +253,6 @@ namespace Infrasturcture.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Reclamations",
-                columns: table => new
-                {
-                    IdReclamation = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Titre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Statut = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IdTechnicien = table.Column<int>(type: "int", nullable: false),
-                    IdClient = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ResponsableSAVid = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reclamations", x => x.IdReclamation);
-                    table.ForeignKey(
-                        name: "FK_Reclamations_AspNetUsers_IdClient",
-                        column: x => x.IdClient,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Reclamations_ResponsablesSAV_ResponsableSAVid",
-                        column: x => x.ResponsableSAVid,
-                        principalTable: "ResponsablesSAV",
-                        principalColumn: "id");
-                    table.ForeignKey(
-                        name: "FK_Reclamations_Techniciens_IdTechnicien",
-                        column: x => x.IdTechnicien,
-                        principalTable: "Techniciens",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Interventions",
-                columns: table => new
-                {
-                    IdIntervention = table.Column<int>(type: "int", nullable: false),
-                    ArticleId = table.Column<int>(type: "int", nullable: false),
-                    technicien = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EstSousGarantie = table.Column<bool>(type: "bit", nullable: false),
-                    ResponsableSAVid = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Interventions", x => x.IdIntervention);
-                    table.ForeignKey(
-                        name: "FK_Interventions_Articles_ArticleId",
-                        column: x => x.ArticleId,
-                        principalTable: "Articles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Interventions_ResponsablesSAV_ResponsableSAVid",
-                        column: x => x.ResponsableSAVid,
-                        principalTable: "ResponsablesSAV",
-                        principalColumn: "id");
-                    table.ForeignKey(
-                        name: "FK_Interventions_Techniciens_IdIntervention",
-                        column: x => x.IdIntervention,
-                        principalTable: "Techniciens",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Articles_ClientId",
-                table: "Articles",
-                column: "ClientId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Articles_Title",
-                table: "Articles",
-                column: "Title");
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -325,36 +291,14 @@ namespace Infrasturcture.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Interventions_ArticleId",
-                table: "Interventions",
-                column: "ArticleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Interventions_ResponsableSAVid",
-                table: "Interventions",
-                column: "ResponsableSAVid");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reclamations_IdClient",
-                table: "Reclamations",
-                column: "IdClient");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reclamations_IdTechnicien",
-                table: "Reclamations",
-                column: "IdTechnicien");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reclamations_ResponsableSAVid",
-                table: "Reclamations",
-                column: "ResponsableSAVid");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Articles");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -371,22 +315,22 @@ namespace Infrasturcture.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Clients");
+
+            migrationBuilder.DropTable(
                 name: "Interventions");
 
             migrationBuilder.DropTable(
                 name: "Reclamations");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "Articles");
-
-            migrationBuilder.DropTable(
-                name: "ResponsablesSAV");
+                name: "Responsables");
 
             migrationBuilder.DropTable(
                 name: "Techniciens");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

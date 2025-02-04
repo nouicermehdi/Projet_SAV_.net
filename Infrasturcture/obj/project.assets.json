@@ -1609,7 +1609,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
@@ -4284,6 +4285,7 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.0",
+      "Microsoft.EntityFrameworkCore.Design >= 8.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.0"
     ]
@@ -4295,11 +4297,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj",
+      "projectUniqueName": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj",
       "projectName": "Infrasturcture",
-      "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\Infrasturcture.csproj",
+      "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\Infrasturcture.csproj",
       "packagesPath": "C:\\Users\\nouic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Infrasturcture\\obj\\",
+      "outputPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Infrasturcture\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4320,8 +4322,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj": {
-              "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV\\Application\\Application.csproj"
+            "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\nouic\\Documents\\new\\.net\\ProjetSAV - Copie\\Application\\Application.csproj"
             }
           }
         }
@@ -4351,6 +4353,12 @@
             "version": "[8.0.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.0, )"
           },

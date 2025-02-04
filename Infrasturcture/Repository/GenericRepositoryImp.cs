@@ -56,7 +56,7 @@ namespace Domain.Repository
             return await _dbSet.FindAsync(keyValues);
         }
 
-        public async Task<IEnumerable<T>> GetManyAsync(Expression<Func<T, bool>> where = null)
+        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> where = null)
         {
             return where != null
                   ? await _dbSet.Where(where).ToListAsync()

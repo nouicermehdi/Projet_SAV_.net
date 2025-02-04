@@ -3,6 +3,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Infrastructure.Persistence;
 using Domain.Entities;
+using Application.Interfaces.Repository;
+using Domain.Repository;
+using Application.Interfaces.IServices;
+using Application.Services;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace Infrastructure.Extensions
 {
@@ -10,29 +16,33 @@ namespace Infrastructure.Extensions
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            // Configurez le DbContext
+            // Configurez DbContext
             var connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<SavDbContext>(options =>
                 options.UseSqlServer(connectionString));
+            services.AddIdentity<Admin, IdentityRole>()
+    .AddEntityFrameworkStores<SavDbContext>()
+    .AddDefaultTokenProviders();
 
-            
 
-            // Configurez l'identité avec votre classe Client
-            services.AddIdentityApiEndpoints<Client>(options =>
+            // Enregistrement des services supplémentaires
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositoryImp<>));
+            services.AddScoped<IService<Article>, ServiceArticle>();
+            services.AddScoped<IService<Client>, ServiceClient>();
+            services.AddScoped<IService<Reclamation>, ServiceReclamation>();
+            services.AddScoped<IService<Intervention>, ServiceIntervention>();
+
+            // Ajoutez une politique CORS si nécessaire
+            services.AddCors(options =>
             {
-                // Configurez les options d'Identity si nécessaire
-                options.Password.RequireDigit = true;
-                options.Password.RequiredLength = 6;
-                options.Password.RequireNonAlphanumeric = false;
-            })
-
-             .AddEntityFrameworkStores<SavDbContext>();
-
-            //Pour afficher endpoint User en swagger
-            services.AddEndpointsApiExplorer();
-
+                options.AddPolicy("AllowAll", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
         }
-
-
     }
 }
+

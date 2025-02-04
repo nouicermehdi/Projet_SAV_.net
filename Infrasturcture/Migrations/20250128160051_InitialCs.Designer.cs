@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrasturcture.Migrations
 {
     [DbContext(typeof(SavDbContext))]
-    [Migration("20250122012910_first")]
-    partial class first
+    [Migration("20250128160051_InitialCs")]
+    partial class InitialCs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,11 +33,10 @@ namespace Infrasturcture.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ClientId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("DateAchat")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -46,74 +45,104 @@ namespace Infrasturcture.Migrations
                     b.Property<int>("GarantieEnMois")
                         .HasColumnType("int");
 
-                    b.Property<float>("Prix")
-                        .HasColumnType("real");
+                    b.Property<double>("Prix")
+                        .HasColumnType("float");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("Title");
 
                     b.ToTable("Articles");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Intervention", b =>
+            modelBuilder.Entity("Domain.Entities.Client", b =>
                 {
-                    b.Property<int>("IdIntervention")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ArticleId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("EstSousGarantie")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ResponsableSAVid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("technicien")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdIntervention");
-
-                    b.HasIndex("ArticleId");
-
-                    b.HasIndex("ResponsableSAVid");
-
-                    b.ToTable("Interventions");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Reclamation", b =>
-                {
-                    b.Property<int>("IdReclamation")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdReclamation"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DateCreation")
+                    b.Property<DateTime>("DateNaissance")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Intervention", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("DateIntervention")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IdClient")
+                    b.Property<bool>("EstSousGarantie")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Statut")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdTechnicien")
+                    b.Property<string>("titreReclamation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Interventions");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Reclamation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("ResponsableSAVid")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomClient")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomProduit")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Statut")
                         .IsRequired()
@@ -123,13 +152,7 @@ namespace Infrasturcture.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdReclamation");
-
-                    b.HasIndex("IdClient");
-
-                    b.HasIndex("IdTechnicien");
-
-                    b.HasIndex("ResponsableSAVid");
+                    b.HasKey("Id");
 
                     b.ToTable("Reclamations");
                 });
@@ -148,12 +171,15 @@ namespace Infrasturcture.Migrations
 
                     b.Property<string>("name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
-                    b.ToTable("ResponsablesSAV");
+                    b.ToTable("Responsables");
                 });
 
             modelBuilder.Entity("Domain.Entities.Technicien", b =>
@@ -166,8 +192,7 @@ namespace Infrasturcture.Migrations
 
                     b.Property<string>("name")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
@@ -381,71 +406,30 @@ namespace Infrasturcture.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Entities.Client", b =>
+            modelBuilder.Entity("Domain.Entities.Admin", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<DateTime>("DateNaissance")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("DateNaissance")
+                        .HasColumnType("date");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.ToTable("AspNetUsers", t =>
+                        {
+                            t.Property("DateNaissance")
+                                .HasColumnName("Admin_DateNaissance");
+                        });
 
-                    b.HasDiscriminator().HasValue("Client");
+                    b.HasDiscriminator().HasValue("Admin");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Article", b =>
+            modelBuilder.Entity("Domain.Entities.User", b =>
                 {
-                    b.HasOne("Domain.Entities.Client", null)
-                        .WithMany("Articles")
-                        .HasForeignKey("ClientId");
-                });
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-            modelBuilder.Entity("Domain.Entities.Intervention", b =>
-                {
-                    b.HasOne("Domain.Entities.Article", "Article")
-                        .WithMany("Interventions")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<DateOnly>("DateNaissance")
+                        .HasColumnType("date");
 
-                    b.HasOne("Domain.Entities.Technicien", "Technicien")
-                        .WithMany("Interventions")
-                        .HasForeignKey("IdIntervention")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.ResponsableSAV", null)
-                        .WithMany("Interventions")
-                        .HasForeignKey("ResponsableSAVid");
-
-                    b.Navigation("Article");
-
-                    b.Navigation("Technicien");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Reclamation", b =>
-                {
-                    b.HasOne("Domain.Entities.Client", "Client")
-                        .WithMany("Reclamations")
-                        .HasForeignKey("IdClient")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.Technicien", "Technicien")
-                        .WithMany("Reclamations")
-                        .HasForeignKey("IdTechnicien")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Entities.ResponsableSAV", null)
-                        .WithMany("Reclamations")
-                        .HasForeignKey("ResponsableSAVid");
-
-                    b.Navigation("Client");
-
-                    b.Navigation("Technicien");
+                    b.HasDiscriminator().HasValue("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -497,32 +481,6 @@ namespace Infrasturcture.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.Entities.Article", b =>
-                {
-                    b.Navigation("Interventions");
-                });
-
-            modelBuilder.Entity("Domain.Entities.ResponsableSAV", b =>
-                {
-                    b.Navigation("Interventions");
-
-                    b.Navigation("Reclamations");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Technicien", b =>
-                {
-                    b.Navigation("Interventions");
-
-                    b.Navigation("Reclamations");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Client", b =>
-                {
-                    b.Navigation("Articles");
-
-                    b.Navigation("Reclamations");
                 });
 #pragma warning restore 612, 618
         }

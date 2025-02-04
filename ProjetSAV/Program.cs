@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Infrastructure.Extensions;
 using Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,9 +28,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.MapIdentityApi<Client>();
-
+app.UseCors("AllowAll");
+//app.MapIdentityApi<Admin>();
 
 app.UseAuthentication();
 

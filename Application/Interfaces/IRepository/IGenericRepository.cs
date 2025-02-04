@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+
 using System.Threading.Tasks;
 
 namespace Application.Interfaces.Repository
@@ -17,7 +18,7 @@ namespace Application.Interfaces.Repository
         Task DeleteAsync(Expression<Func<T, bool>> where);
         Task<T> GetAsync(Expression<Func<T, bool>> where);
         Task<T> GetByIdAsync(params object[] keyValues);
-        Task<IEnumerable<T>> GetManyAsync(Expression<Func<T, bool>> where = null);
+        Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> where = null);
         Task UpdateAsync(T entity);
     }
 
